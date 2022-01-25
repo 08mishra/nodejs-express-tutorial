@@ -4,27 +4,27 @@
      "age":"22"
  },
  {
-    "id":1,
-     "name":"Prashant",
-     "age":"22"
- },
- {
-    "id":1,
-     "name":"Prashant",
-     "age":"22"
- },
- {
     "id":2,
-     "name":"Amit",
+     "name":"Prashant",
      "age":"22"
  },
  {
     "id":3,
-     "name":"Sumit",
+     "name":"Prashant",
      "age":"22"
  },
  {
     "id":4,
+     "name":"Amit",
+     "age":"22"
+ },
+ {
+    "id":5,
+     "name":"Sumit",
+     "age":"22"
+ },
+ {
+    "id":6,
      "name":"Aditya",
      "age":"22"
  }

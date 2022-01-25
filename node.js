@@ -306,10 +306,10 @@ app.listen -- runing your server
 // it is literally everywhere in express
 
 
-const express= require('express');
+// const express= require('express');
  
-const app = express();
-const data = require('./Jsondata.json');
+// const app = express();
+// const data = require('./Jsondata.json');
  
 // req ==> middleware ==>res
 // we can use middleware as many times we want as in line number 325
@@ -349,25 +349,98 @@ const data = require('./Jsondata.json');
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
-const path= require('path')
+// const path= require('path')
 
- app.use(express.static('./Form'))
+//  app.use(express.static('./Form'))
 
- app.get('/', (req, res)=>{
-     res.sendFile(path.resolve(__dirname, './Form/Form.html'))
- })
+//  app.get('/', (req, res)=>{
+//      res.sendFile(path.resolve(__dirname, './Form/Form.html'))
+//  })
 
+ 
 
 //POST method ==> post on server 
 
-app.use(express.urlencoded({extended:false})) // built in middleware function in Express. It parses incoming request
+//app.use(express.urlencoded({extended:false})) // built in middleware function in Express. It parses incoming request
 // with urlencoded and is based on body parser but now it comes with express
 // it allows us to access the form data from form.html
-app.post('/login', (req, res)=>{
-    console.log(req.body)
-    console.log(req.body.name)
-    res.send(req.body.name)
+
+
+// app.get('/api/people', (req, res)=>{
+//     res.status(201).json({success:true, data:data})
+// })
+
+// app.post('/api/people', (req, res)=>{
+//     const {name} = req.body
+    
+
+//     if(!name){
+//         res.status(404).json({success:false, msg:'please provide name value'})
+//     } 
+//         res.status(201).send({success:true, data:name})
+    
+// })
+
+
+// app.put('/api/people', (req, res)=>{
+//     const {id, name}= req.body;
+
+//     if(!name){
+//         res.status(404).json({success:false, msg:'please provide name'});
+
+//     }
+
+//     const people = {id,name};
+//     res.status(201).json({success:true,data:[...data, people]})
+// })
+
+// app.delete('/api/people/:id', (req, res)=>{
+//     const {id, name}= req.params;
+//     if(!id){
+//         res.status(404).json({success:false, msg:`people with id ${id} does not exist`})
+//     }
+//     const newPeople = data.filter((people)=>people.id!==Number(id));
+//     res.status(201).json({success:true, data:newPeople})
+// })
+
+// app.post('/login', (req, res)=>{
+//     console.log(req.body)
+//     console.log(req.body.name)
+//     res.send(req.body.name)
+// })
+ 
+
+// the problem with app.post is to if we have to set it up for every route we have to do it manually
+//  and this going to be extremely slow
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                              EXPRESS ROUTER                               //
+//                                                                           //
+//////////////////////////////////////////////////////////////////////////////
+
+/* our app has many routes to overcome this and make group of our routes we use express routes */
+
+ 
+const express = require('express')
+const app= express()
+const people = require('./routes')
+
+app.use('/api/people', people) // we use our routes from routes.js file
+
+app.get('/', (req,res)=>{
+    res.send('<h1>Hello Prashant</h1>')
 })
+
+
+
+
+
+
+
 
 
 
